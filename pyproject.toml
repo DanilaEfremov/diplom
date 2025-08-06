@@ -1,0 +1,18 @@
+[project]
+name = "diplom"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "deep-translator>=1.11.4",
+    "matplotlib>=3.10.5",
+    "nltk>=3.9.1",
+    "pandas>=2.3.1",
+    "python-telegram-bot>=22.3",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.7",
+]
