@@ -8,6 +8,8 @@ import csv
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
 
+VK_TOKEN = 'vk token'
+TG_TOKEN = 'tg token'
 
 # Команда /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -87,7 +89,7 @@ def posts_in_group(id_group: int, find: str):
         :param find: Ключевое слово для поиска в постах.
         :return: JSON-ответ API VK с найденными постами.
     """
-    vk_token = 'токен вк'
+    vk_token = VK_TOKEN
     url = 'https://api.vk.com/method/wall.search'
     data = {
         'access_token': vk_token,
@@ -110,7 +112,7 @@ def comments_in_post(id_group: int, id_post: str):
         :param id_post: ID поста.
         :return: JSON-ответ с комментариями к посту.
     """
-    vk_token = 'токен вк'
+    vk_token = VK_TOKEN
     url = 'https://api.vk.com/method/wall.getComments'
     data = {
         'access_token': vk_token,
@@ -164,7 +166,7 @@ async def my_function(update: Update, context: ContextTypes.DEFAULT_TYPE, group:
 
 # Запуск бота
 if __name__ == '__main__':
-    app = ApplicationBuilder().token("токен тг бота").build()
+    app = ApplicationBuilder().token(TG_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(button_handler))
